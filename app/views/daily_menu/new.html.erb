@@ -1,0 +1,29 @@
+<h1>New Daily Menu</h1>
+
+<%= form_with model: @daily_menu do |f| %>
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+
+  <div class='my-2'> <%= f.label 'add to menu?' %></div>
+  <% @categories.map do |c| %>
+    <h5> <%= c.category %> </h5>
+    <% filtred = @dishes.filter{|d| d.category_id == c.id}%>
+        <% filtred.each do |item| %>
+        <%= f.check_box(item.name) %>
+        <%= f.label(item.name) %>
+      <% end %> 
+     <%# <%= f.collection_check_boxes :menu, filtred, :id, :name %> 
+  <% end %>
+  <div class='my-3'><%= f.submit 'Save', class: 'btn btn-info' %></div>
+<% end %>
+
+
+
+
+
+
+       
+
+
+
+      %>

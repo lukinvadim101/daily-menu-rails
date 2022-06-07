@@ -1,0 +1,52 @@
+<div class="row">
+  <h1 class='text-center mb-5'>
+    Daily Menu
+    <%# <br> %>
+    <%= Date.today.strftime("%e %b %Y") %>
+  </h1>
+  <div class='col-8 '>
+  <div class="card">
+    <div class="card-header d-flex">
+       <h2>  Dishes   </h2>
+        <%= link_to "➕", new_dish_path, class: 'text-decoration-none' %>
+    </div>
+     <div class="d-flex gap-3 m-3 ">
+         <% @dishes.each_with_index do |dish, index|%>
+
+          <div class=' card flex-row justify-content-around p-2'>
+            <div class="card-title h5 mb-0"> <%= dish.name.capitalize %></div>
+            <div class="mx-2">
+               <%= link_to 'i', dish_path(dish.id), class: 'text-decoration-none font-weight-bold' %>
+            </div>
+           
+          </div>
+      <% end %>
+
+     </div>
+  </div>
+  
+
+
+  </div>
+
+  <div class='col-4'>
+    <div class="card">
+      <div class="card-header d-flex ">
+        <h2> Categories </h2>
+        <%= link_to "➕", new_category_path, class: 'text-decoration-none' %>
+      </div>
+
+        <div class="d-flex gap-3 m-3">
+          <% @categories.each do |category| %>
+            <button type="button" class="btn btn-outline-primary position-relative p-2">
+              <%= link_to category.category, class: "text-decoration-none" %>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                <%= category.dishes.count %>
+              </span>
+            </button>
+          <% end %>
+        </div>
+    </div>
+  </div>
+
+  </div>

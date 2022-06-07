@@ -1,0 +1,20 @@
+  <%= form_with model: @dish do |form| %>
+    <div class="form-group mt-3 w-25">
+      <div class='mt-2'> <%= form.label :name %> </div>
+      <div> <%= form.text_field :name, class: 'form-control' %> </div>
+
+      <div class='mt-2'> <%= form.label :category_id %> 
+       <%= form.select :category_id, Category.all.map{|c| [c.category,c.id]}, class: 'form-control' %> </div>
+
+      <div class='mt-2 '> <%= form.label :price_type %> 
+       <%= form.select :price_type, ['by weight', 'by item'], class: 'form-control' %> </div>
+
+      <div class='mt-2'> <%= form.label :price %> </div>
+      <div> <%= form.text_field :price, class: 'form-control'%> </div> 
+
+      <div class='my-3'><%= form.submit 'Save', class: 'btn btn-info' %></div>
+    </div>
+  <% end %>
+  
+  
+  <%# ['Garnish', 'Salad', 'Soups', 'Pizza'] %>

@@ -1,0 +1,8 @@
+<h2 class='text-center'>Edit<%= @dish.name %></h2>
+
+<%= render 'form', dish: @dish %>
+
+<%= link_to "Back to dish", dish_path %>
+<div class='mt-3'>
+  <%= link_to "Back to list", dishes_path %>
+</div>
